@@ -1,0 +1,129 @@
+basic magazine
+close quarters
+headshot booster
+high-velocity mag
+hollow point ward
+monster rounds
+rapid rounds
+restorative shot
+active reload
+fleetfoot
+kinetic dash
+long range
+melee charge
+mystic shot
+slowing bullets
+soul shredder bullets
+swift striker
+burst fire
+escalating resilience
+headhunter
+hunter's aura
+intensifying magazine
+point blank
+pristine emblem
+sharpshooter
+tesla bullets
+titanic magazine
+toxic bullets
+alchemical fire
+crippling headshot
+frenzy
+glass cannon
+lucky shot
+ricochet
+silencer
+spiritual overflow
+vampiric burst
+warp stone
+extra health
+extra regen
+extra stamina
+healing rite
+melee lifesteal
+rebuttal
+sprint boots
+bullet armor
+combat barrier
+debuff reducer
+divine barrier
+enchanter's barrier
+enduring speed
+healbane
+restorative lifesteal
+return fire
+spirit armor
+fortitude
+improved bullet armor
+improved spirit armor
+lifestrike
+majestic leap
+rescue beam
+superior stamina
+veil walker
+colossus
+debuff remover
+inhibitor
+leech
+phantom strike
+soul rebirth
+unstoppable
+restorative locket
+ammo scavenger
+extra charge
+extra spirit
+mystic burst
+mystic reach
+spirit strike
+infuser
+arcane surge
+bullet resist shredder
+cold front
+compress cooldown
+decay
+duration extender
+improved spirit
+mystic slow
+mystic vulnerability
+quicksilver reload
+slowing hex
+spirit sap
+suppressor
+knockdown
+silence glyph
+spirit snatch
+surge of power
+torment pulse
+ethereal shift
+improved burst
+improved reach
+magic shock
+boundless spirit
+curse
+diviner's kevlar
+echo shard
+escalating exposure
+magic carpet
+mystic reverb
+refresher
+weapon damage
+bullet resist
+spirit power
+spirit resist
+fire rate
+ammo
+reload time
+movement speed
+sprint speed
+lifesteal
+cooldown
+active
+passive
+souls
+shield
+health regen
+vitality
+spirit damage
+melee damage
+stamina
+slide distance

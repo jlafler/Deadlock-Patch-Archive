@@ -1,0 +1,708 @@
+:root {
+    --bg-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --accent-color: #ff4655;
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.header {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+/* Size and position the search bar container */
+.search-container {
+    flex-grow: 1;
+    max-width: 400px;
+    /* Prevents it from stretching across the whole screen */
+    display: flex;
+}
+
+/* Optional: Make it look good on mobile */
+@media (max-width: 600px) {
+    .pinned-title {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-container {
+        max-width: 100%;
+    }
+}
+
+/* Style the actual input box */
+#searchBar {
+    width: 100%;
+    padding: 10px 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+#searchBar:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 8px rgba(235, 210, 180, 0.2);
+}
+
+/* Styling for the new Hero Portrait Headers */
+.hero-portrait-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Darker, more subtle gradient to let the transparent image shine */
+    background: linear-gradient(90deg, rgba(255, 70, 85, 0.15) 0%, rgba(30, 30, 30, 0) 100%);
+    border-left: 4px solid var(--accent-color);
+    padding: 5px 10px;
+    /* Thinner padding so the hero can "peek" out */
+    margin: 25px 0 10px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.hero-portrait-img {
+    width: 55px;
+    /* Slightly larger to show off the transparency details */
+    height: auto;
+    /* Remove the border and background */
+    border: none;
+    background-color: transparent;
+    object-fit: contain;
+    /* Add a subtle red glow behind the hero */
+    filter: drop-shadow(0 0 8px rgba(255, 70, 85, 0.4));
+    /* Pull the image slightly to the left to "overlap" the border for a 3D effect */
+    margin-left: -5px;
+}
+
+.hero-name-text {
+    font-size: 1.4em;
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+    /* Looks more "official" for hero titles */
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Calendar Band Styles */
+/* 1. The Wrapper: Give it full width bounds */
+.calendar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* Take up the full width of the header */
+    max-width: 100vw;
+    /* Prevent horizontal scrolling on the whole page */
+    overflow: hidden;
+    /* Keeps the hover zones and scrollbar hidden */
+}
+
+/* 2. The Band: Stretch it and enable horizontal flex */
+.calendar-band {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* Forces days into a single horizontal line */
+    overflow-x: auto;
+    /* Allows scrolling inside the band */
+    width: 100%;
+    /* Fill the screen */
+    gap: 8px;
+    /* Space between each day */
+    padding: 10px 0;
+    /* Breathing room on top and bottom */
+
+    /* Hide scrollbars for a clean app look */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.calendar-band::-webkit-scrollbar {
+    display: none;
+}
+
+/* 3. The Days: Prevent them from squishing */
+.calendar-day {
+    flex: 0 0 auto;
+    /* MAGIC LINE: Do not grow, do not shrink, stay natural size */
+    width: 60px;
+    /* Or whatever your preferred day width is */
+
+    /* Keep all your other existing day styles below here! */
+    /* background: ..., border: ..., text-align: ..., etc. */
+}
+
+.calendar-band::-webkit-scrollbar {
+    height: 8px;
+}
+
+.calendar-band::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+.calendar-band::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.calendar-day {
+    min-width: 65px;
+    flex-shrink: 0;
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 5px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.calendar-day:hover {
+    filter: brightness(1.3);
+}
+
+.calendar-day.has-patch {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.calendar-day.selected {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 70, 85, 0.3);
+}
+
+.day-name {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.day-number {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 4px 0;
+}
+
+.day-month {
+    font-size: 0.75em;
+    opacity: 0.8;
+}
+
+/* Patch Card Styles */
+.patch-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.patch-card {
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.patch-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.patch-title {
+    margin: 0;
+    color: var(--accent-color);
+}
+
+.patch-date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.reply-date-header {
+    color: #aaa;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+/* --- NEW: Collapsible Category Styles --- */
+.patch-category {
+    background-color: #252525;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.patch-category summary {
+    background-color: #2a2a2a;
+    padding: 12px 15px;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    color: var(--text-color);
+    list-style: none;
+    /* Hide default arrow */
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.patch-category summary:hover {
+    background-color: #333;
+}
+
+.patch-category summary::-webkit-details-marker {
+    display: none;
+}
+
+.patch-category summary::after {
+    content: '+';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4em;
+    color: var(--accent-color);
+}
+
+.patch-category[open] summary::after {
+    content: '−';
+}
+
+.patch-category[open] summary {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--accent-color);
+}
+
+.category-content {
+    padding: 15px 25px;
+}
+
+.category-content ul {
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.category-content li {
+    margin-bottom: 6px;
+}
+
+.category-content a {
+    color: var(--accent-color);
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.nav-btn {
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background-color: rgba(255, 70, 85, 0.1);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--bg-color);
+    border-bottom: 2px solid var(--border-color);
+    transition: max-height 0.4s ease;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The Title stays visible always */
+.pinned-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allows stacking on small screens */
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pinned-title h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+/* --- Collapsed State --- */
+.sticky-header.collapsed .collapsible-content {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Adjust button handle position */
+.header-toggle-btn {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    height: 20px;
+    padding: 0 15px;
+}
+
+/* Adjust the main container so it doesn't jump when the header sticks */
+.patch-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Optional: Make the header title slightly smaller when sticky to save space */
+.sticky-header h1 {
+    margin: 5px 0;
+    font-size: 1.5em;
+    transition: font-size 0.3s ease;
+}
+
+
+.main-content-wrapper {
+    display: flex;
+    max-width: 1200px;
+    /* Increased to fit sidebar */
+    margin: 20px auto;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.patch-container {
+    flex: 1;
+    /* Takes up remaining space */
+    max-width: 800px;
+}
+
+.stats-sidebar {
+    width: 250px;
+    position: sticky;
+    top: 280px;
+    /* Aligns with your sticky header height */
+    height: fit-content;
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.steam-link-container {
+    padding: 20px;
+    background: rgba(23, 26, 33, 0.8);
+    /* Steam Dark */
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px 0;
+    border: 1px solid #66c0f4;
+    /* Steam Blue */
+}
+
+.steam-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #1b2838;
+    color: #66c0f4 !important;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    font-weight: bold;
+    border: 1px solid #66c0f4;
+    transition: all 0.2s ease;
+}
+
+.steam-button:hover {
+    background-color: #66c0f4;
+    color: #1b2838 !important;
+}
+
+.steam-button img {
+    /* Turns the icon white/blueish to match the theme */
+    filter: brightness(0) saturate(100%) invert(74%) sepia(35%) font-size(242%) hue-rotate(178deg) brightness(101%) contrast(92%);
+}
+
+.steam-button:hover img {
+    filter: brightness(0) invert(0);
+}
+
+.calendar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    /* Keeps the zones contained */
+}
+
+/* Hide the ugly default scrollbar to make it look like an app */
+.calendar-band::-webkit-scrollbar {
+    display: none;
+}
+
+.calendar-band {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* IMPORTANT: Do not use 'scroll-behavior: smooth' here, it will fight the JS */
+}
+
+/* The Hover Zones */
+.scroll-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    z-index: 10;
+    opacity: 0;
+    /* Hidden by default */
+    transition: opacity 0.3s ease, color 0.2s ease;
+    pointer-events: auto;
+}
+
+/* Reveal the zones when hovering over the whole calendar area */
+.calendar-wrapper:hover .scroll-zone {
+    opacity: 1;
+}
+
+.scroll-zone:hover {
+    color: #fff;
+    /* Brighten arrow on hover */
+}
+
+/* Left Zone Gradient */
+.scroll-zone.left {
+    left: 0;
+    background: linear-gradient(to right, rgba(23, 26, 33, 1) 0%, rgba(23, 26, 33, 0) 100%);
+}
+
+/* Right Zone Gradient */
+.scroll-zone.right {
+    right: 0;
+    background: linear-gradient(to left, rgba(23, 26, 33, 1) 0%, rgba(23, 26, 33, 0) 100%);
+}
+
+/* --- Hero Buffer UI Styles --- */
+
+.hero-general-changes {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.hero-general-changes li {
+    margin-bottom: 6px;
+}
+
+/* The Main Ability Wrapper */
+.ability-block {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--accent-color);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 6px 6px 0;
+}
+
+.ability-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* Adds space between the icon and the title */
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Optional: subtle separator line */
+}
+
+.ability-icon {
+    width: 36px;
+    /* Scales the 48px image down slightly for a sleeker look */
+    height: 36px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #121212;
+    /* Fallback color while loading */
+}
+
+.ability-title {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Full-width Base Changes */
+.ability-base-changes {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0 0 15px 0;
+}
+
+.ability-base-changes li {
+    margin-bottom: 6px;
+    padding-left: 12px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- The 3-Column Tier Grid --- */
+.ability-tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Forces 3 equal columns */
+    gap: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tier-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.tier-column-header {
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 6px;
+}
+
+.tier-column ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.tier-column li {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.no-changes-text {
+    color: rgba(255, 255, 255, 0.2);
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Tier Badges (Keeping your previous colors) */
+.tier-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #121212;
+}
+
+.tier-badge.t1,
+.tier-badge.T1 {
+    background-color: #a3c2c2;
+}
+
+.tier-badge.t2,
+.tier-badge.T2 {
+    background-color: #d1b2ff;
+}
+
+.tier-badge.t3,
+.tier-badge.T3 {
+    background-color: #ffd633;
+    box-shadow: 0 0 5px rgba(255, 214, 51, 0.4);
+}
+
+/* Make it responsive on mobile! */
+@media (max-width: 768px) {
+    .ability-tiers-grid {
+        grid-template-columns: 1fr;
+        /* Stacks them vertically on small screens */
+    }
+}
+
+/* --- Hero Divider --- */
+.hero-divider {
+    border: 0;
+    height: 1px;
+    /* Creates a line that fades out at the left and right edges */
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+    margin: 40px 0;
+    /* Huge breathing room between heroes */
+    width: 100%;
+}
+
+/* Hide the very last divider so it doesn't leave an awkward line at the bottom of the category */
+.category-content .hero-divider:last-child {
+    display: none;
+}
+
+
+
+html {
+    /* Offset the scroll position by the approximate height of your sticky header */
+    scroll-padding-top: 250px;
+}

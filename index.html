@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlock Patch Archive</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="sticky-header" id="stickyHeader">
+        <div class="pinned-title">
+            <h1>Deadlock Patch Archive</h1>
+
+            <div class="search-container">
+                <input type="text" id="searchBar" placeholder="Search for a hero, item, or keyword...">
+            </div>
+        </div>
+
+        <div class="collapsible-content">
+            <div class="calendar-wrapper">
+                <div class="scroll-zone left" id="scrollZoneLeft"><span>◀</span></div>
+                <div id="calendarBand" class="calendar-band"></div>
+                <div class="scroll-zone right" id="scrollZoneRight"><span>▶</span></div>
+            </div>
+
+            <div class="calendar-controls">
+                <button id="prevPatch" class="nav-btn">← Older</button>
+                <button id="nextPatch" class="nav-btn">Newer →</button>
+            </div>
+        </div>
+
+        <button id="headerToggle" class="header-toggle-btn">
+            <span class="toggle-icon">▲</span>
+        </button>
+    </div>
+
+    <div class="main-content-wrapper">
+        <div class="patch-container" id="patchContainer"></div>
+
+        <aside class="stats-sidebar" id="statsSidebar">
+            <h3>Patch at a Glance</h3>
+            <div class="stat-item">
+                <span class="stat-label">Heroes Changed</span>
+                <span id="statHeroes" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Items Adjusted</span>
+                <span id="statItems" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Gameplay Tweaks</span>
+                <span id="statGameplay" class="stat-value">0</span>
+            </div>
+            <hr>
+            <div id="heroListPreview" class="hero-mini-list">
+            </div>
+        </aside>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Start the engine
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPatchNotes();
+
+            // Mousewheel scroll listener
+            const band = document.getElementById('calendarBand');
+            band.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                band.scrollLeft += e.deltaY;
+            }, { passive: false });
+
+            document.getElementById('searchBar').addEventListener('input', applyFilters);
+        });
+    </script>
+</body>
+
+</html>
