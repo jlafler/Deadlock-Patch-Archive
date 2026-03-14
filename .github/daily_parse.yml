@@ -1,0 +1,40 @@
+To set this up on GitHub, we will create a GitHub Action workflow. This acts like a virtual computer that wakes up on a schedule, runs your scripts in order, and saves the results back to your repository.Since your process has a specific sequence (Scraper $\rightarrow$ URLs $\rightarrow$ PatchScraper $\rightarrow$ Notes), we will define them as sequential steps in a single job.1. Create the Workflow FileIn your project folder, create the following directory structure: .github/workflows/. Inside that folder, create a new file named update-patches.yml.2. The Workflow ConfigurationCopy and paste the following code into update-patches.yml:YAMLname: Update Deadlock Patch Notes
+on:
+  schedule:
+    # Runs every 6 hours (00:00, 06:00, 12:00, 18:00 UTC)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allows you to run it manually from the "Actions" tab
+
+jobs:
+  scrape-and-parse:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run URL Scraper
+        # This script must output patch_urls.json
+        run: node scraper.js
+
+      - name: Run Patch Note Scraper
+        # This script must read patch_urls.json and output all_patch_notes.json
+        run: node PatchScraper.js
+
+      - name: Commit and Push Updated Data
+        run: |
+          git config --global user.name "Deadlock Bot"
+          git config --global user.email "bot@deadlock-api.com"
+          git add patch_urls.json all_patch_notes.json
+          
+          # Only commit if there are actually changes to the files
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update

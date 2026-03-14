@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlock Filter Manager</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e24;
+            color: #eee;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            background: #2a2a35;
+            color: white;
+            border: 1px solid #444;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 16px;
+            font-size: 14px;
+            background: #4db8ff;
+            color: #111;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #3aa5eb;
+        }
+
+        button.add-btn {
+            background: #50fa7b;
+            color: #111;
+        }
+
+        button.add-btn:hover {
+            background: #40d666;
+        }
+
+        button.delete-btn {
+            background: #ff5555;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        button.delete-btn:hover {
+            background: #e04444;
+        }
+
+        #status {
+            margin-top: 10px;
+            font-weight: bold;
+            height: 20px;
+        }
+
+        .success {
+            color: #50fa7b;
+        }
+
+        .error {
+            color: #ff5555;
+        }
+
+        /* Controls Row (Search and Add) */
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        #searchInput {
+            width: 300px;
+            padding: 10px;
+            font-size: 14px;
+            background: #2a2a35;
+            color: white;
+            border: 1px solid #444;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #searchInput:focus {
+            border-color: #50fa7b;
+        }
+
+        /* Form Row Styles */
+        #formContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: #25252d;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+
+        .form-row input,
+        .form-row select {
+            padding: 10px;
+            background: #111;
+            color: #eee;
+            border: 1px solid #444;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .form-row input:focus,
+        .form-row select:focus {
+            border-color: #4db8ff;
+        }
+
+        /* Flex ratios to make the form look good */
+        .txt-primary {
+            flex: 1;
+        }
+
+        .txt-aliases {
+            flex: 2;
+        }
+
+        .json-name {
+            flex: 2;
+        }
+
+        .json-cat {
+            flex: 1;
+        }
+
+        .json-tier {
+            flex: 1;
+        }
+
+        .json-cost {
+            flex: 1;
+        }
+
+        .json-aliases {
+            flex: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div>
+            <h2 style="margin: 0 0 10px 0;">⚙️ Deadlock Filter Manager</h2>
+            <select id="fileSelector">
+                <option value="items">items.json (Shop Items)</option>
+                <option value="heroes">heroes.txt (Hero Names)</option>
+                <option value="abilities">abilities.txt (Hero Abilities)</option>
+                <option value="gameplay">gameplay.txt (Patch Categories)</option>
+            </select>
+        </div>
+        <div>
+            <div id="status"></div>
+            <button onclick="saveFile()" style="margin-top: 10px;">💾 Save Changes</button>
+        </div>
+    </div>
+
+    <div
+        style="margin-bottom: 20px; padding: 15px; background: #25252d; border: 1px solid #333; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h3 style="margin: 0 0 5px 0; color: #b88fe5;">🕸️ Scraper Engine</h3>
+            <p style="margin: 0; font-size: 13px; color: #aaa;">Trigger your backend patch scraping scripts.</p>
+        </div>
+        <div>
+            <button onclick="triggerScrape('new')" style="background: #b88fe5; color: #111;">📥 Fetch New
+                Patches</button>
+            <button onclick="triggerScrape('all')" style="background: #ffb86c; color: #111; margin-left: 10px;">⚠️ Force
+                Re-Scrape All</button>
+        </div>
+    </div>
+
+    <div class="controls-row">
+        <button class="add-btn" onclick="addNewRow()">➕ Add New Entry</button>
+        <input type="text" id="searchInput" placeholder="🔍 Search names or aliases..." onkeyup="filterRows()">
+    </div>
+
+    <div id="formContainer"></div>
+
+    <script>
+        const selector = document.getElementById('fileSelector');
+        const container = document.getElementById('formContainer');
+        const statusDiv = document.getElementById('status');
+        const searchInput = document.getElementById('searchInput');
+
+        let currentFileType = 'json';
+
+        // Load file when dropdown changes
+        selector.addEventListener('change', () => {
+            searchInput.value = ""; // Clear search when switching files
+            loadFile();
+        });
+
+        async function loadFile() {
+            const fileId = selector.value;
+            currentFileType = fileId.endsWith('.json') || fileId === 'items' ? 'json' : 'txt';
+            container.innerHTML = "<p>Loading...</p>";
+
+            try {
+                const res = await fetch(`/api/files/${fileId}`);
+                const data = await res.json();
+
+                if (currentFileType === 'json') {
+                    renderJsonForm(JSON.parse(data.content));
+                } else {
+                    renderTextForm(data.content);
+                }
+            } catch (e) {
+                container.innerHTML = "<p class='error'>Error loading file.</p>";
+            }
+        }
+
+        // --- RENDER TEXT FILES (Heroes, Abilities, Gameplay) ---
+        function renderTextForm(rawText) {
+            container.innerHTML = '';
+            const lines = rawText.split('\n').filter(line => line.trim() !== '');
+
+            lines.forEach(line => {
+                let parts = line.split(':');
+                let primary = parts[0] ? parts[0].trim() : '';
+                let aliases = parts[1] ? parts[1].trim() : '';
+                container.insertAdjacentHTML('beforeend', createTextRow(primary, aliases));
+            });
+        }
+
+        function createTextRow(primary = '', aliases = '') {
+            return `
+                <div class="form-row text-row">
+                    <input type="text" class="txt-primary searchable" placeholder="Primary Name (e.g., Mo & Krill)" value="${primary}">
+                    <input type="text" class="txt-aliases searchable" placeholder="Aliases, comma separated" value="${aliases}">
+                    <button class="delete-btn" onclick="this.parentElement.remove()">❌</button>
+                </div>
+            `;
+        }
+
+        // --- RENDER JSON FILES (Items) ---
+        function renderJsonForm(itemsArray) {
+            container.innerHTML = '';
+            itemsArray.forEach(item => {
+                let aliases = item.aliases ? item.aliases.join(', ') : '';
+                container.insertAdjacentHTML('beforeend', createJsonRow(item.name, item.category, item.tier, item.cost, aliases));
+            });
+        }
+
+        function createJsonRow(name = '', cat = 'Weapon', tier = 'T1', cost = '800', aliases = '') {
+            return `
+                <div class="form-row json-row">
+                    <input type="text" class="json-name searchable" placeholder="Item Name" value="${name}">
+                    <select class="json-cat">
+                        <option value="Weapon" ${cat === 'Weapon' ? 'selected' : ''}>Weapon</option>
+                        <option value="Vitality" ${cat === 'Vitality' ? 'selected' : ''}>Vitality</option>
+                        <option value="Spirit" ${cat === 'Spirit' ? 'selected' : ''}>Spirit</option>
+                    </select>
+                    <select class="json-tier">
+                        <option value="T1" ${tier === 'T1' ? 'selected' : ''}>T1</option>
+                        <option value="T2" ${tier === 'T2' ? 'selected' : ''}>T2</option>
+                        <option value="T3" ${tier === 'T3' ? 'selected' : ''}>T3</option>
+                        <option value="T4" ${tier === 'T4' ? 'selected' : ''}>T4</option>
+                    </select>
+                    <input type="text" class="json-cost" placeholder="Cost" value="${cost}">
+                    <input type="text" class="json-aliases searchable" placeholder="Aliases" value="${aliases}">
+                    <button class="delete-btn" onclick="this.parentElement.remove()">❌</button>
+                </div>
+            `;
+        }
+
+        // --- ADD NEW ROW ---
+        function addNewRow() {
+            if (currentFileType === 'json') {
+                container.insertAdjacentHTML('afterbegin', createJsonRow());
+            } else {
+                container.insertAdjacentHTML('afterbegin', createTextRow());
+            }
+            // Clear search so the new row isn't accidentally hidden
+            searchInput.value = "";
+            filterRows();
+        }
+
+        // --- SEARCH / FILTER ROWS ---
+        function filterRows() {
+            const query = searchInput.value.toLowerCase();
+            const rows = document.querySelectorAll('.form-row');
+
+            rows.forEach(row => {
+                // Find inputs we labeled as "searchable"
+                const inputs = Array.from(row.querySelectorAll('.searchable'));
+                const matches = inputs.some(input => input.value.toLowerCase().includes(query));
+
+                // Toggle flex display
+                row.style.display = matches ? "flex" : "none";
+            });
+        }
+
+        // --- SAVE DATA ---
+        async function saveFile() {
+            const fileId = selector.value;
+            statusDiv.innerHTML = "Saving...";
+            statusDiv.className = "";
+
+            let payloadContent = "";
+
+            if (currentFileType === 'txt') {
+                const rows = document.querySelectorAll('.text-row');
+                let lines = [];
+                rows.forEach(row => {
+                    let primary = row.querySelector('.txt-primary').value.trim();
+                    let aliases = row.querySelector('.txt-aliases').value.trim();
+                    if (primary) {
+                        lines.push(aliases ? `${primary}: ${aliases}` : primary);
+                    }
+                });
+                payloadContent = lines.join('\n');
+            } else {
+                const rows = document.querySelectorAll('.json-row');
+                let items = [];
+                rows.forEach(row => {
+                    let name = row.querySelector('.json-name').value.trim();
+                    if (!name) return;
+
+                    let cat = row.querySelector('.json-cat').value;
+                    let tier = row.querySelector('.json-tier').value;
+                    let costRaw = row.querySelector('.json-cost').value.trim();
+                    let aliasesRaw = row.querySelector('.json-aliases').value.trim();
+
+                    let cost = isNaN(costRaw) ? costRaw : Number(costRaw);
+
+                    let itemObj = { name: name, category: cat, tier: tier, cost: cost };
+
+                    if (aliasesRaw) {
+                        itemObj.aliases = aliasesRaw.split(',').map(s => s.trim()).filter(s => s !== '');
+                    }
+                    items.push(itemObj);
+                });
+                payloadContent = JSON.stringify(items, null, 4);
+            }
+
+            try {
+                const res = await fetch(`/api/files/${fileId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ content: payloadContent })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    statusDiv.innerHTML = "✅ Saved successfully!";
+                    statusDiv.className = "success";
+                } else {
+                    statusDiv.innerHTML = "❌ " + data.error;
+                    statusDiv.className = "error";
+                }
+            } catch (e) {
+                statusDiv.innerHTML = "❌ Network Error.";
+                statusDiv.className = "error";
+            }
+
+            setTimeout(() => statusDiv.innerHTML = "", 3000);
+        }
+
+        // --- TRIGGER SCRAPER (Streaming) ---
+        async function triggerScrape(mode) {
+            statusDiv.innerHTML = "⏳ Starting scraper engine...";
+            statusDiv.className = "";
+
+            try {
+                // We use the Fetch API's built-in Stream Reader
+                const res = await fetch(`/api/scrape/${mode}`, { method: 'POST' });
+                const reader = res.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let buffer = "";
+
+                // Read the stream continuously until the server says it's done
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    // Decode the raw chunk into text
+                    buffer += decoder.decode(value, { stream: true });
+
+                    // Split the text by new lines
+                    const lines = buffer.split('\n');
+
+                    // Keep the last (potentially incomplete) line in the buffer
+                    buffer = lines.pop();
+
+                    // Display the most recent fully completed line
+                    if (lines.length > 0) {
+                        // Filter out empty spaces and grab the last real sentence
+                        const validLines = lines.map(l => l.trim()).filter(l => l !== '');
+                        if (validLines.length > 0) {
+                            const lastLine = validLines[validLines.length - 1];
+
+                            // Update the UI
+                            statusDiv.innerHTML = `🕸️ ${lastLine}`;
+
+                            // Dynamically change colors based on what the console says
+                            if (lastLine.includes('✅')) statusDiv.className = "success";
+                            else if (lastLine.includes('❌') || lastLine.includes('ERROR:')) statusDiv.className = "error";
+                            else statusDiv.className = "";
+                        }
+                    }
+                }
+
+                // Final cleanup when stream finishes
+                if (buffer.trim()) {
+                    statusDiv.innerHTML = `🕸️ ${buffer.trim()}`;
+                }
+
+            } catch (e) {
+                statusDiv.innerHTML = "❌ Network Error or Timeout.";
+                statusDiv.className = "error";
+            }
+
+            // Clear the success message after 8 seconds
+            setTimeout(() => {
+                if (statusDiv.className === "success") statusDiv.innerHTML = "";
+            }, 8000);
+        }
+
+        // Initialize
+        loadFile();
+    </script>
+</body>
+
+</html>

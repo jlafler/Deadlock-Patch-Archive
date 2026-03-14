@@ -1,0 +1,1055 @@
+[
+    {
+        "name": "Test Item",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Close Quarters",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Extended Magazine",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Headshot Booster",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "High-Velocity Rounds",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Monster Rounds",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Rapid Rounds",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Restorative Shot",
+        "category": "Weapon",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Active Reload",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Fleetfoot",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Intensifying Magazine",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Kinetic Dash",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Long Range",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Melee Charge",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Mystic Shot",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Opening Rounds",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Recharging Rush",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Slowing Bullets",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Spirit Shredder Bullets",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Split Shot",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Stalker",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Swift Striker",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Titanic Magazine",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Weakening Headshot",
+        "category": "Weapon",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Alchemical Fire",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Ballistic Enchantment",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Berserker",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Blood Tribute",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Burst Fire",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Cultist Sacrifice",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Escalating Resilience",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Express Shot",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Headhunter",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Heroic Aura",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Hollow Point",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Hunter's Aura",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200,
+        "aliases": [
+            "Hunters Aura"
+        ]
+    },
+    {
+        "name": "Point Blank",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Sharpshooter",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Spirit Rend",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Tesla Bullets",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Toxic Bullets",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Weighted Shots",
+        "category": "Weapon",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Armor Piercing Rounds",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Capacitor",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Crippling Headshot",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Crushing Fists",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Frenzy",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Glass Cannon",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Lucky Shot",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Ricochet",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Shadow Weave",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Silencer",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Spellslinger",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Spiritual Overflow",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Haunting Shot",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Infinite Rounds",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Runed Gauntlets",
+        "category": "Weapon",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Extra Health",
+        "category": "Vitality",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Extra Regen",
+        "category": "Vitality",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Extra Stamina",
+        "category": "Vitality",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Healing Rite",
+        "category": "Vitality",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Melee Lifesteal",
+        "category": "Vitality",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Rebuttal",
+        "category": "Vitality",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Sprint Boots",
+        "category": "Vitality",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Battle Vest",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Bullet Lifesteal",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Debuff Reducer",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Enchanter's Emblem",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Enduring Speed",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Guardian Ward",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Healbane",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Healing Booster",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Reactive Barrier",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Restorative Locket",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Return Fire",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Spirit Lifesteal",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600,
+        "aliases": [
+            "Spirit_Lifesteal"
+        ]
+    },
+    {
+        "name": "Spirit Shielding",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Weapon Shielding",
+        "category": "Vitality",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Bullet Resilience",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Counterspell",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Dispel Magic",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Fortitude",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Fury Trance",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Healing Nova",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Lifestrike",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Majestic Leap",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Metal Skin",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Rescue Beam",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Spirit Resilience",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Stamina Mastery",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Trophy Collector",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Veil Walker",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Warp Stone",
+        "category": "Vitality",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Cheat Death",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Colossus",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Divine Barrier",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Diviner's Kevlar",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Healing Tempo",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Infuser",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Inhibitor",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Juggernaut",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Leech",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Phantom Strike",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Plated Armor",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Siphon Bullets",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Spellbreaker",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Unstoppable",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Vampiric Burst",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Witchmail",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Celestial Blessing",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Cloak of Opportunity",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Electric Slippers",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Eternal Gift",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Nullification Burst",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Seraphim Wings",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Shadow Strike",
+        "category": "Vitality",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Extra Charge",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Extra Spirit",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Golden Goose Egg",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800,
+        "aliases": [
+            "Golden Egg Goose"
+        ]
+    },
+    {
+        "name": "Mystic Burst",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Mystic Expansion",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Mystic Regeneration",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Rusted Barrel",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Spirit Strike",
+        "category": "Spirit",
+        "tier": "T1",
+        "cost": 800
+    },
+    {
+        "name": "Arcane Surge",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Bullet Resist Shredder",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Cold Front",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Compress Cooldown",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Duration Extender",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Improved Spirit",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Mystic Slow",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Mystic Vulnerability",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Quicksilver Reload",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Slowing Hex",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Spirit Sap",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Suppressor",
+        "category": "Spirit",
+        "tier": "T2",
+        "cost": 1600
+    },
+    {
+        "name": "Decay",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Disarming Hex",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Greater Expansion",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Knockdown",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Radiant Regeneration",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Rapid Recharge",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Silence Wave",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Spirit Snatch",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Superior Cooldown",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Superior Duration",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Surge of Power",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Tankbuster",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Torment Pulse",
+        "category": "Spirit",
+        "tier": "T3",
+        "cost": 3200
+    },
+    {
+        "name": "Arctic Blast",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Boundless Spirit",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Cursed Relic",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400,
+        "aliases": [
+            "Curse"
+        ]
+    },
+    {
+        "name": "Curse",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Echo Shard",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Escalating Exposure",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Ethereal Shift",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Focus Lens",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Lightning Scroll",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Magic Carpet",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Mercurial Magnum",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Mystic Reverb",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Refresher",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Scourge",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Spirit Burn",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Transcendent Cooldown",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Vortex Web",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": 6400
+    },
+    {
+        "name": "Frostbite Charm",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Mystic Conduit",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Mystical Piano",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Omnicharge Signet",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Prism Blast",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Shrink Ray",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": "Legendary"
+    },
+    {
+        "name": "Unstable Concoction",
+        "category": "Spirit",
+        "tier": "T4",
+        "cost": "Legendary",
+        "aliases": [
+            "Enhanced Unstable Concoction"
+        ]
+    }
+]

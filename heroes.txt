@@ -1,4 +1,4 @@
-abrams
+abrams:abram
 apollo
 bebop
 billy
@@ -9,7 +9,7 @@ drifter
 dynamo
 fathom
 graves
-grey talon
+grey talon: grey_talon
 haze
 holliday
 infernus
@@ -20,7 +20,7 @@ lash
 mcginnis
 mina
 mirage
-mo & krill
+moandkrill: moandkrill, mo_and_krill, mo & krill
 paige
 paradox
 pocket

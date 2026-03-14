@@ -18,7 +18,11 @@
             <h1>Deadlock Patch Archive</h1>
 
             <div class="search-container">
-                <input type="text" id="searchBar" placeholder="Search for a hero, item, or keyword...">
+                <div class="search-input-wrapper">
+                    <input type="text" id="searchBar" placeholder="Search for a hero, item, or keyword...">
+                    <button id="clearSearchBtn" class="clear-btn" title="Clear Search">✖</button>
+                </div>
+                <button id="toggleAllBtn" class="action-btn">Expand All</button>
             </div>
         </div>
 
@@ -41,45 +45,53 @@
     </div>
 
     <div class="main-content-wrapper">
-        <div class="patch-container" id="patchContainer"></div>
+        <div class="patch-container" id="patchContainer">
+
+            <div id="noResultsState" class="no-results-container" style="display: none;">
+                <div class="no-results-icon">∅</div>
+                <h2>No Changes Found</h2>
+                <p>We couldn't find any updates matching "<span id="searchQueryDisplay"></span>".</p>
+                <button
+                    onclick="document.getElementById('searchBar').value = ''; document.getElementById('searchBar').dispatchEvent(new Event('input'));"
+                    class="clear-results-btn">
+                    Clear Search
+                </button>
+            </div>
+        </div>
 
         <aside class="stats-sidebar" id="statsSidebar">
             <h3>Patch at a Glance</h3>
-            <div class="stat-item">
-                <span class="stat-label">Heroes Changed</span>
-                <span id="statHeroes" class="stat-value">0</span>
+
+            <div class="stat-group">
+                <div class="stat-item">
+                    <span class="stat-label">Heroes Changed</span>
+                    <span id="statHeroes" class="stat-value">0</span>
+                </div>
+                <div id="heroListPreview" class="hero-mini-list"></div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Items Adjusted</span>
-                <span id="statItems" class="stat-value">0</span>
+
+            <hr style="margin: 15px 0; border-color: #333;">
+
+            <div class="stat-group">
+                <div class="stat-item">
+                    <span class="stat-label">Items Adjusted</span>
+                    <span id="statItems" class="stat-value">0</span>
+                </div>
+                <div id="itemListPreview" class="hero-mini-list"></div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Gameplay Tweaks</span>
-                <span id="statGameplay" class="stat-value">0</span>
-            </div>
-            <hr>
-            <div id="heroListPreview" class="hero-mini-list">
+
+            <hr style="margin: 15px 0; border-color: #333;">
+
+            <div class="stat-group">
+                <div class="stat-item">
+                    <span class="stat-label">Gameplay Tweaks</span>
+                    <span id="statGameplay" class="stat-value">0</span>
+                </div>
             </div>
         </aside>
     </div>
-
-    <script src="parser.js"></script>
-    <script src="app.js"></script>
-    <script>
-        // Start the engine
-        document.addEventListener('DOMContentLoaded', () => {
-            loadPatchNotes();
-
-            // Mousewheel scroll listener
-            const band = document.getElementById('calendarBand');
-            band.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                band.scrollLeft += e.deltaY;
-            }, { passive: false });
-
-            document.getElementById('searchBar').addEventListener('input', applyFilters);
-        });
-    </script>
+    <button id="backToTopBtn" class="back-to-top" title="Back to Top">▲</button>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
