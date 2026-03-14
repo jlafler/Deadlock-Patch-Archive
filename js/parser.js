@@ -441,7 +441,7 @@ export function parseAndGroupMarkdown(markdown) {
             const startOfLineRegex = new RegExp(`^[\\*\\-\\\\\\s]*${escapedName}\\s*:?\\s*`, 'i');
             let remainingText = line.replace(startOfLineRegex, '');
 
-            let imageName = matchedItemObj.name.replace(/ /g, '_').toLowerCase;
+            let imageName = matchedItemObj.name.replace(/ /g, '_').toLowerCase();
 
             // Rebuild the line forcing the Golden Primary Name, no matter what alias was matched!
             let formattedLine = `<img src="Resources/ItemIcons/50px-${imageName}.png" alt="${matchedItemObj.name}" class="item-icon-inline" onerror="this.style.display='none'"> <strong style="color: #ffd633;">${matchedItemObj.name}</strong>: ${remainingText}`;
