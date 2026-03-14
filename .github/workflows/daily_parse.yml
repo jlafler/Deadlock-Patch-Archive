@@ -26,13 +26,9 @@ jobs:
         run: npm install
 
       - name: Run URL Scraper
-        env:
-          DEADLOCK_COOKIE: ${{ secrets.DEADLOCK_COOKIE }}
         run: node scraper.js
 
       - name: Run Patch Note Scraper
-        env:
-          DEADLOCK_COOKIE: ${{ secrets.DEADLOCK_COOKIE }}
         run: node PatchScraper.js
 
       # --- FIX #2: Use a bulletproof, official action to push the changes ---

@@ -6,7 +6,7 @@ const TurndownService = require('turndown');
 const turndownService = new TurndownService();
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-//  Check if the user typed '--force' in the terminal
+// NEW: Check if the user typed '--force' in the terminal
 const forceScrape = process.argv.includes('--force');
 
 async function scrapeAllPatchDetails() {
@@ -34,24 +34,15 @@ async function scrapeAllPatchDetails() {
             const patch = patchList[i];
             const existingPatch = existingNotesMap[patch.url];
 
-            //  Add 'forceScrape' to the condition. If it's true, it bypasses the skip check.
+            // NEW: Add 'forceScrape' to the condition. If it's true, it bypasses the skip check.
             if (forceScrape || !existingPatch || existingPatch.replyCount !== patch.replyCount) {
                 console.log(`[${i + 1}/${patchList.length}] ⬇️ FETCHING: ${patch.version}`);
 
                 try {
-                    // ---  Disguise the bot and add Authentication ---
-                    const requestConfig = {
-                        headers: {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                            'Cookie': process.env.DEADLOCK_COOKIE || ''
-                        }
-                    };
-
-                    //  Pass the config into the request
-                    const response = await axios.get(patch.url, requestConfig);
+                    const response = await axios.get(patch.url);
                     const $ = cheerio.load(response.data);
 
-                    //  We use an array to collect the posts instead of a single string
+                    // NEW: We use an array to collect the posts instead of a single string
                     let postsArray = [];
                     const firstPost = $('.message').first();
                     const threadCreator = firstPost.attr('data-author');
@@ -89,10 +80,10 @@ async function scrapeAllPatchDetails() {
                         }
                     });
 
-                    //  Flip the array upside down so the newest reply is first!
+                    // NEW: Flip the array upside down so the newest reply is first!
                     postsArray.reverse();
 
-                    //  Join the array back into a single string, putting dividers between them
+                    // NEW: Join the array back into a single string, putting dividers between them
                     let combinedHtml = postsArray.join('<br><br><hr><br><br>');
 
                     patch.notes = combinedHtml ? turndownService.turndown(combinedHtml) : "Content not found.";
