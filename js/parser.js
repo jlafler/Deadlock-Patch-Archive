@@ -95,18 +95,22 @@ export function parseAndGroupMarkdown(markdown) {
     function flushHeroBuffer() {
         if (!heroBuffer) return;
 
+        // 1. Create the formatted name (e.g., "Abrams" or "MoAndKrill")
         let fileNamePart = (heroBuffer.name === "mo & krill") ? "MoAndKrill" :
             heroBuffer.name.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 
+        // 2. FORCE to lowercase for GitHub Pages compatibility
+        const safeFileName = fileNamePart.toLowerCase();
+
         let html = `\n\n<details class="hero-card">`;
         html += `<summary class="hero-card-header">
-            <div class="hero-header-content">
-                <img src="Resources/HeroPortraits/88px-${fileNamePart}_card.png" class="hero-portrait-img" loading="lazy" onerror="this.style.display='none'">
-                <img src="Resources/HeroNames/${fileNamePart}_name.png" class="hero-name-img" alt="${heroBuffer.name}" loading="lazy" 
-                     onerror="this.outerHTML='<span class=\\'hero-name-text\\'>${heroBuffer.name}</span>'">
-            </div>
-            <span class="expand-icon">▼</span>
-        </summary>\n`;
+        <div class="hero-header-content">
+            <img src="Resources/HeroPortraits/88px-${safeFileName}_card.png" class="hero-portrait-img" loading="lazy" onerror="this.style.display='none'">
+            <img src="Resources/HeroNames/${safeFileName}_name.png" class="hero-name-img" alt="${heroBuffer.name}" loading="lazy" 
+                 onerror="this.outerHTML='<span class=\\'hero-name-text\\'>${heroBuffer.name}</span>'">
+        </div>
+        <span class="expand-icon">▼</span>
+    </summary>\n`;
 
         html += `<div class="hero-card-content">\n`;
 
@@ -121,7 +125,7 @@ export function parseAndGroupMarkdown(markdown) {
 
         for (const [abilityName, tiers] of Object.entries(heroBuffer.abilities)) {
             const displayAbilityName = abilityName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-            const imageFileName = displayAbilityName.replace(/ /g, '_');
+            const imageFileName = displayAbilityName.replace(/ /g, '_').toLowerCase();
 
             html += `<div class="ability-sub-card">`;
             html += `<div class="ability-header">
@@ -437,7 +441,7 @@ export function parseAndGroupMarkdown(markdown) {
             const startOfLineRegex = new RegExp(`^[\\*\\-\\\\\\s]*${escapedName}\\s*:?\\s*`, 'i');
             let remainingText = line.replace(startOfLineRegex, '');
 
-            let imageName = matchedItemObj.name.replace(/ /g, '_');
+            let imageName = matchedItemObj.name.replace(/ /g, '_').toLowerCase;
 
             // Rebuild the line forcing the Golden Primary Name, no matter what alias was matched!
             let formattedLine = `<img src="Resources/ItemIcons/50px-${imageName}.png" alt="${matchedItemObj.name}" class="item-icon-inline" onerror="this.style.display='none'"> <strong style="color: #ffd633;">${matchedItemObj.name}</strong>: ${remainingText}`;

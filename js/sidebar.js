@@ -60,7 +60,7 @@ export function updateSidebarStats() {
 
             const img = document.createElement('img');
             img.loading = 'lazy'; // <-- ADD THIS LINE
-            img.src = `Resources/HeroPortraits/88px-${fileName}_card.png`;
+            img.src = `Resources/HeroPortraits/88px-${fileName.toLowerCase()}_card.png`;
             img.className = 'mini-portrait';
             img.title = hero;
             img.onerror = function () { this.style.display = 'none'; };
@@ -76,11 +76,11 @@ export function updateSidebarStats() {
     if (itemListPreview) {
         itemListPreview.innerHTML = '';
         renderedItems.forEach(itemName => {
-            let fileName = itemName.replace(/ /g, '_');
+            let fileName = itemName.replace(/ /g, '_').toLowerCase;
 
             const img = document.createElement('img');
             img.loading = 'lazy'; // <-- ADD THIS LINE
-            img.src = `Resources/ItemIcons/50px-${fileName}.png`;
+            img.src = `Resources/ItemIcons/50px-${fileName.toLowerCase()}.png`;
             img.className = 'mini-item-icon';
             img.title = itemName;
             img.onerror = function () { this.style.display = 'none'; };
