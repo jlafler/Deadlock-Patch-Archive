@@ -6,6 +6,18 @@ const baseURL = 'https://forums.playdeadlock.com';
 const forumPath = '/forums/changelog.10/';
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+
+// --- NEW: Disguise the bot and add Authentication ---
+const requestConfig = {
+    headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        // This pulls your login cookie from GitHub Secrets safely
+        'Cookie': process.env.DEADLOCK_COOKIE || ''
+    }
+};
+
 async function scrapeAllPages() {
     try {
         let currentPage = 1;
@@ -21,7 +33,8 @@ async function scrapeAllPages() {
 
             console.log(`Fetching Page ${currentPage} of ${totalPages || '?'}: ${targetURL}`);
 
-            const response = await axios.get(targetURL);
+            // NEW: Pass the headers into the axios request
+            const response = await axios.get(targetURL, requestConfig);
             const $ = cheerio.load(response.data);
 
             if (currentPage === 1) {

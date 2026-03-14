@@ -1,0 +1,45 @@
+name: Update Deadlock Patch Notes
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch: 
+
+# --- FIX #1: Explicitly grant the bot permission to push code ---
+permissions:
+  contents: write 
+
+jobs:
+  scrape-and-parse:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run URL Scraper
+        env:
+          DEADLOCK_COOKIE: ${{ secrets.DEADLOCK_COOKIE }}
+        run: node scraper.js
+
+      - name: Run Patch Note Scraper
+        env:
+          DEADLOCK_COOKIE: ${{ secrets.DEADLOCK_COOKIE }}
+        run: node PatchScraper.js
+
+      # --- FIX #2: Use a bulletproof, official action to push the changes ---
+      - name: Commit and Push Updated Data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-update patch notes"
+          file_pattern: "*.json" # Only commit JSON files to be safe
+          commit_user_name: "Deadlock Bot"
+          commit_user_email: "bot@deadlock-api.com"
