@@ -35,6 +35,4 @@ jobs:
           git config --global user.name "Deadlock Bot"
           git config --global user.email "bot@deadlock-api.com"
           git add patch_urls.json all_patch_notes.json
-          
-          # Only commit if there are actually changes to the files
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update patch notes: $(date -u)" && git push)
